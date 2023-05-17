@@ -17,7 +17,7 @@ const handleSubmit = async(e) => {
   
   try {
     toggleSpinner()
-    const response = await fetch("/prompt", {
+    const response = await fetch("/dreams", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

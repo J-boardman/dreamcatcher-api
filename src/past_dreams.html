@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/past_dreams.js" defer></script>
+    <link rel="stylesheet" href="/style.css" />
+    <title>Dreamcatcher</title>
+  </head>
+  <body>
+    <header class="h-16 w-full my-2">
+      <section
+        class="max-w-4xl w-full flex justify-around mx-auto items-center gap-4 flex-col md:flex-row"
+      >
+        <a href="/index.html">
+          <img src="/logo.png" alt="Dreamcatcher" />
+        </a>
+        <nav class="flex gap-4">
+          <a
+            class="focus:outline-none text-white bg-violet-700 hover:bg-violet-800 focus:ring-violet-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2"
+            href="/"
+            >New Dream</a
+          >
+          <a
+            class="focus:outline-none text-white bg-violet-700 hover:bg-violet-800 focus:ring-violet-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2"
+            href="/past_dreams"
+            >Past dreams</a
+          >
+        </nav>
+      </section>
+    </header>
+    <section class="flex flex-col mx-auto max-w-4xl mt-24 items-center gap-8">
+      <h1 class="text-3xl">Past dreams</h1>
+
+      <section
+        id="dream_list"
+        class="grid md:grid-cols-[4fr,_1fr,_1fr] max-w-4xl mx-auto text-center items-center"
+      ></section>
+    </section>
+
+    <dialog class="rounded-xl max-w-4xl shadow">
+      <div class="bg-white rounded-lg">
+        <!-- Modal header -->
+        <div class="flex items-start justify-between p-4 rounded-t">
+          <h3
+            data-dream_heading
+            class="text-xl font-semibold text-gray-900 dark:text-white"
+          ></h3>
+          <button
+            type="button"
+            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+            data-close_modal
+          >
+            <svg
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <!-- Modal body -->
+        <div class="p-6 space-y-6">
+          <p data-dream_body></p>
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>
