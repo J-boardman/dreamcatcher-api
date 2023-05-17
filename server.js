@@ -12,6 +12,6 @@ app.use(express.static("." + "/src"))
 
 app.use("/dreams", dreamRouter)
 app.use("/past_dreams", async(req, res) => res.sendFile("/src/past_dreams.html", { root: "."}))
-app.use("/", async(req, res) => res.sendFile("index.html", { root: "."}))
+app.use("/", async(req, res) => res.sendFile("/src/index.html", { root: "."}))
 
 app.listen(3500, () => console.log("App running on http://localhost:3500"))
