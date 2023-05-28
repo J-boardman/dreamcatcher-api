@@ -1,13 +1,12 @@
-import mysql2 from "mysql2/promise"
-import * as dotenv from "dotenv"
+import mongoose from "mongoose";
 
-dotenv.config()
-
-const { DATABASE_HOST, DATABASE_USER, DATABASE_PWD, DATABASE_DB } = process.env
-
-export const db_conn = mysql2.createPool({
-  host: DATABASE_HOST,
-  user: DATABASE_USER,
-  password: DATABASE_PWD,
-  database: DATABASE_DB
-})
+export default () => {
+  mongoose.connect(process.env.DB_URL, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  });
+  
+  const db = mongoose.connection;
+  
+  db.on("error", console.error.bind(console, "Mongo connection error"));
+}

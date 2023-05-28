@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/output.css" />
+    <script src="/script.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body class="h-screen grid grid-rows-[4rem,_1fr]">
+    <% if(currentUser) console.log(currentUser) %>
+    <!-- HEADER -->
+    <header class="bg-secondary">
+      <nav
+        class="max-w-4xl h-full mx-auto flex justify-between items-center text-white"
+      >
+        <a class="mx-4" href="/">Logo</a>
+        <% if(currentUser) { %>
+        <div class="dropdown dropdown-hover dropdown-end">
+          <label
+            tabindex="0"
+            class="btn mx-4 bg-secondary border-0 hover:bg-secondary-focus"
+            >
+            <%= currentUser.username %>
+            </label
+          >
+          <ul
+            tabindex="0"
+            class="text-secondary-focus dropdown-content menu p-2 bg-base-100 rounded-box w-52 shadow-xl"
+          >
+            <li><a>Past Dreams</a></li>
+            <li><a href="/log-out">Sign out</a></li>
+          </ul>
+        </div>
+        <% } else { %>
+        <!-- The button to open modal -->
+        <label for="my-modal-4" class="btn btn-secondary mx-4"> Account </label>
+        <% } %>
+      </nav>
+    </header>
+    <div class="hero bg-base-200">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">
+            Unlock the Hidden Meanings of Your Dreams!
+          </h1>
+          <p class="py-6">
+            Welcome to our dream interpretation and storytelling service, where
+            the mysterious realm of dreams comes alive. Our AI-powered language
+            model acts as your personal dream interpreter and bedtime
+            storyteller, providing captivating insights and imaginative tales
+            based on the symbols and themes present in your dreams.
+          </p>
+          <a href="/new-dream" class="btn btn-secondary">Get Started</a>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL -->
+    <input type="checkbox" id="my-modal-4" class="modal-toggle" />
+    <label for="my-modal-4" class="modal cursor-pointer">
+      <label id="user-modal" class="modal-box relative" for="">
+      </label>
+    </label>
+    <!-- Register form -->
+    <template id="register-form">
+      <h3 class="text-xl font-bold">Sign up for an account</h3>
+      <form class="form-control" id="registration-form">
+        <label class="label" for="username">Username</label>
+        <input id="username-input" class="input input-bordered" name="username" placeholder="username" type="text" />
+        <span id="register-warning" class="label-text text-error hidden h-0 text-right">Sorry, username is taken!</span>
+        <label class="label" for="password">Password</label>
+        <input class="input input-bordered" name="password" placeholder="password" type="text" />
+        <button class="btn btn-secondary my-4">Sign Up</button>
+      </form>
+      <button class="link link-hover" value="log-in-form" data-modal_switcher>Log in to your account</button>
+    </template>
+    <!-- Log in form -->
+    <template id="log-in-form">
+      <h3 class="text-xl font-bold">Sign in</h3>
+      <form class="form-control" action="/log-in" method="POST">
+        <label class="label" for="username">Username</label>
+        <input class="input input-bordered" name="username" placeholder="username" type="text" />
+        <label class="label" for="password">Password</label>
+        <input class="input input-bordered" name="password" type="password" placeholder="password" />
+        <button class="btn btn-secondary my-4">Log In</button>
+      </form>
+      <button class="link link-hover" value="register-form" data-modal_switcher>Sign up for an account</button>
+    </template>
+  </body>
+</html>

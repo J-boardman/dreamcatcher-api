@@ -1,52 +1,56 @@
-const form = document.querySelector("form")
-const main = document.querySelector("main")
-const spinner = document.querySelector(".spinner")
-const textWarning = document.querySelector(".text-length")
-
-const toggleSpinner = async() => {
-  spinner.classList.toggle("hidden")
-  spinner.classList.toggle("h-0")
-}
+const userModal = document.getElementById("user-modal");
 
 const handleSubmit = async(e) => {
-  main.textContent = ""
-  const prompt = {
-    prompt: e.target[0].value
-  }
-  e.preventDefault();
+  e.preventDefault()
+  let formData = JSON.stringify(Object.fromEntries(new FormData(e.target)));
+  let warningMessage = document.getElementById("register-warning")
+  let usernameInput = document.getElementById("username-input")
+  warningMessage.classList.add("hidden")
+  usernameInput.classList.remove("input-error")
   
-  try {
-    toggleSpinner()
-    const response = await fetch("/dreams", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(prompt)
-    })
+  const duplicateUsername = await fetch("/users/" + e.target.username.value)
+  console.log(formData)
 
-    const data = await response.json()
-    const { message } = data
-    message.replace(".\n", "")
-    toggleSpinner()
-    main.textContent = message
-  } catch (error) {
-    console.log(error)
-    main.textContent = "Error encountered."
-  } finally {
-    form.reset()
-    textWarning.textContent = "0/80"
+  if(duplicateUsername.status == 409){
+    warningMessage.classList.remove("hidden")
+    usernameInput.classList.add("input-error")
+    return
   }
+
+  const res = await fetch("/register", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: formData
+  })
+
+  const autoLogin = await fetch("/log-in", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: formData
+  })
+
+  location.href = res.url
 }
 
-const checkTextLength = (e) => {
-  const maxLength = 80
-  const characterCount = e.target.value.length
-  characterCount == maxLength
-    ? textWarning.classList.add('text-red-500')
-    : textWarning.classList.remove('text-red-500')
-  textWarning.textContent = `${characterCount}/${maxLength}`
+
+const renderUserModal = (form = "log-in-form") => {
+  const template = document.getElementById(form)
+  
+  userModal.innerHTML = null
+  userModal.appendChild(template.content.cloneNode(true))
+  
+  const modalSwitch = document.querySelector("[data-modal_switcher]")
+  modalSwitch.addEventListener("click", (e) => renderUserModal(e.target.value))
+  
+  const registerForm = document.getElementById("registration-form")
+  registerForm?.addEventListener("submit", handleNewDreamSubmit)
 }
 
-form.addEventListener("submit", handleSubmit)
-form.addEventListener("keydown", checkTextLength)
+renderUserModal()
+
+
+
