@@ -9,7 +9,7 @@ export const register = async (req, res, next) => {
       password: hashedPwd,
     });
     await user.save();
-    res.redirect("/dream");
+    res.redirect("/new-dream");
   } catch (error) {
     console.log(error)
   }

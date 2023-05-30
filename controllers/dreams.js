@@ -1,6 +1,6 @@
 import { Dream } from "../models/Dream.js";
 import mongoose, { Mongoose } from "mongoose";
-import { Configuration, OpenAIApi } from "openai";
+import { openai } from "../config/openai.js"
 
 export const getAllDreams = async (req, res) => {
   try {
@@ -23,29 +23,28 @@ export const getDreamById = async (req, res) => {
 export const deleteDream = async (req, res) => {
   try {
     const deletedDream = await Dream.deleteOne({ _id: req.params.id });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 export const addDream = async (req, res) => {
-  if (!req.body.user || !req.body.prompt) return;
   const { user, prompt } = req.body
-  
-  const configuration = new Configuration({
-    organization: "org-JGNjwXl9oECdJ6r2MnTG85vm",
-    apiKey: process.env.OPENAI_API_KEY,
-  });
-  
-  const openai = new OpenAIApi(configuration);
+  if (!user || !prompt) {
+    console.log("User or prompt invalid")
+    return
+  };
 
   const PROMPT =
-  "I want you to act as a dream interpreter. I will give you descriptions of my dreams, and you will provide short interpretations based on the symbols and themes present in the dream. Please limit it to 100 words \n Prompt: ";
+  "I want you to act as a dream interpreter. I will give you descriptions of my dreams, and you will provide short interpretations based on the symbols and themes present in the dream. Prompt: ";
   
   try {
+    console.log("Interpreting dream...")
     const response = await openai.createCompletion({
-      model: "text-davinci-003",
+      model: "text-davinci-002",
       prompt: PROMPT + prompt,
       // prompt: "Respond with the number 1",
-      max_tokens: 80,
+      max_tokens: 256,
       temperature: 0,
     });
 
@@ -61,7 +60,9 @@ export const addDream = async (req, res) => {
 
     const newDream = new Dream(dream);
     await newDream.save();
-    res.redirect(`/dreams/${newDream.id}`);
+    console.log("Dream saved!")
+    return res.status(200).json({ dream: newDream })
+    res.redirect(`/dreams/${user}`);
   } catch (error) {
     console.log(error);
   }

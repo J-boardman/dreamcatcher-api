@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/output.css" />
     <script src="/script.js" defer></script>
-    <title>Dream</title>
+    <title>Dream Journal</title>
   </head>
   <body class="h-screen grid grid-rows-[4rem,_1fr]">
     <% if(currentUser) console.log(currentUser) %>
@@ -17,7 +17,6 @@
       >
         <a class="mx-4" href="/">
           <img src="/logo_bg.png" width="200" height="75" alt="">
-
         </a>
         <% if(currentUser) { %>
         <div class="dropdown dropdown-hover dropdown-end">
@@ -32,8 +31,7 @@
             class="text-secondary-focus dropdown-content menu p-2 bg-base-100 rounded-box w-52 shadow-xl"
           >
           <li><a href="/new-dream">Record Dream</a></li>
-          
-          <li><a href="/dreams/<%= currentUser.id %>">Dream Journal</a></li>
+            <li><a href="/dreams/<%= currentUser.id %>">Dream Journal</a></li>
             <li><a href="/log-out">Sign out</a></li>
           </ul>
         </div>
@@ -43,23 +41,40 @@
         <% } %>
       </nav>
     </header>
-    <div class="hero bg-base-200" data-dream="<%= dream._id%>">
+    <div class="bg-base-200">
       <section class="max-w-4xl mx-auto">
-        <div tabindex="0" class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
-          <div class="collapse-title text-xl font-medium">
-            <p class="text-xl font-medium">
+        <h1 class="text-5xl font-bold my-8 text-center">Dream Journal</h1>
+        <% if (!dreams.length) { %>
+          <div class="my-8 flex flex-col gap-8 justify-center">
+            <p class="text-center">No dreams recorded!</p>
+            <a href="/new-dream" class="text-center link link-hover link-primary w-full mx-auto ">Record a dream</a>
+          </div>
+          <% } else if(currentUser?.id == dreams[0]?.author.toString()) {%>
+        <section class="flex flex-col gap-4">
+        <% for (let dream of dreams) { %>
+          <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+            <div class="collapse-title text-xl font-medium">
               <%= dream.prompt %>
-            </p> 
-            <p class="text-sm font-normal"><%= dream.date %></p>
+            </div>
+            <div class="collapse-content">
+              <p class="m-2 font-semibold"><%= dream.date %></p>
+              <p><%= dream.response %></p>
+            </div>
+            <div class="flex">
+                <button data-delete_dream value="<%= dream._id %>" class="w-full rounded-none btn btn-error text-white text-end">Delete</button>
+              </div>
           </div>
-          <div class="collapse-content">
-            <p><%= dream.response %></p>
-          </div>
-        </div>
+            <% } %> 
+          </section>
+          <% } else { %>
+        <h1 class="text-5xl font-bold my-6 text-center">
+          Please log in to see your recorded dreams
+        </h1>
+
+        <% } %>
       </section>
     </div>
-      
-      
+
     <!-- MODAL -->
     <input type="checkbox" id="my-modal-4" class="modal-toggle" />
     <label for="my-modal-4" class="modal cursor-pointer">

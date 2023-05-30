@@ -1,6 +1,6 @@
 const userModal = document.getElementById("user-modal");
 
-const handleSubmit = async(e) => {
+const handleRegisterSubmit = async(e) => {
   e.preventDefault()
   let formData = JSON.stringify(Object.fromEntries(new FormData(e.target)));
   let warningMessage = document.getElementById("register-warning")
@@ -36,7 +36,6 @@ const handleSubmit = async(e) => {
   location.href = res.url
 }
 
-
 const renderUserModal = (form = "log-in-form") => {
   const template = document.getElementById(form)
   
@@ -47,10 +46,18 @@ const renderUserModal = (form = "log-in-form") => {
   modalSwitch.addEventListener("click", (e) => renderUserModal(e.target.value))
   
   const registerForm = document.getElementById("registration-form")
-  registerForm?.addEventListener("submit", handleNewDreamSubmit)
+  registerForm?.addEventListener("submit", handleRegisterSubmit)
 }
 
 renderUserModal()
 
+const handleDreamDelete = async(e) => {
+  console.log(e.target.parentElement.parentElement.remove())
+  await fetch("/dreams/" + e.target.value, {
+    method: "DELETE"
+  })
+}
 
+const deleteDreamBtns = document.querySelectorAll("[data-delete_dream]")
+deleteDreamBtns.forEach(btn => btn.addEventListener("click", handleDreamDelete))
 

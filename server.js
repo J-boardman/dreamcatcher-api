@@ -13,8 +13,10 @@ import { logOut, register } from "./controllers/auth.js";
 // Route imports 
 import users from "./routes/users.js"
 import dreams from "./routes/dreams.js"
+import stories from "./routes/stories.js"
 import { getDreamById } from "./controllers/dreams.js";
 import { Dream } from "./models/Dream.js";
+import { Story } from "./models/Story.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -53,15 +55,34 @@ app.post("/log-in", passport.authenticate("local", {
   failureRedirect: "/",
 }));
 
-app.get("/dreams/:id", async(req, res) => {
+app.get("/dream/:id", async(req, res) => {
   console.log(req.params.id)
   const dream = await Dream.findById(req.params.id)
   res.render("past-dream", { dream })
+})
+
+app.get("/dreams/:userID", async(req, res) => {
+  try {
+    const dreams = await Dream.find({ author: req.params.userID }).sort({ date: -1 })
+    res.render("user-dreams", { dreams })
+  } catch (error) {
+    console.log(error)    
+  }
+})
+
+app.get("/story/:id", async(req, res) => {
+  try {
+    const story = await Story.findById(req.params.id)
+    res.render("story", { story })
+  } catch (error) {
+    console.log(error)
+  }
 })
   
 
 // Routers
 app.use("/users", users)
 app.use("/dreams", dreams)
+app.use("/stories", stories)
 
 app.listen("3500", () => console.log("App running on http://localhost:3500"));

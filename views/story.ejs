@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/output.css" />
     <script src="/script.js" defer></script>
-    <title>Dream</title>
+    <title>Dreamcatcher</title>
   </head>
   <body class="h-screen grid grid-rows-[4rem,_1fr]">
     <% if(currentUser) console.log(currentUser) %>
@@ -16,8 +16,7 @@
         class="max-w-4xl h-full mx-auto flex justify-between items-center text-white"
       >
         <a class="mx-4" href="/">
-          <img src="/logo_bg.png" width="200" height="75" alt="">
-
+          <img src="/logo_bg.png" width="200" height="75" alt="" />
         </a>
         <% if(currentUser) { %>
         <div class="dropdown dropdown-hover dropdown-end">
@@ -31,9 +30,10 @@
             tabindex="0"
             class="text-secondary-focus dropdown-content menu p-2 bg-base-100 rounded-box w-52 shadow-xl"
           >
-          <li><a href="/new-dream">Record Dream</a></li>
-          
-          <li><a href="/dreams/<%= currentUser.id %>">Dream Journal</a></li>
+            <li><a href="/new-dream">Record Dream</a></li>
+            <li>
+              <a href="/dreams/<%= currentUser.id %>">Dream Journal</a>
+            </li>
             <li><a href="/log-out">Sign out</a></li>
           </ul>
         </div>
@@ -43,23 +43,25 @@
         <% } %>
       </nav>
     </header>
-    <div class="hero bg-base-200" data-dream="<%= dream._id%>">
-      <section class="max-w-4xl mx-auto">
-        <div tabindex="0" class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box">
-          <div class="collapse-title text-xl font-medium">
-            <p class="text-xl font-medium">
-              <%= dream.prompt %>
-            </p> 
-            <p class="text-sm font-normal"><%= dream.date %></p>
+    <div class="hero bg-base-200">
+      <div class="hero-content flex-col text-center">
+        <label class="swap">
+          <input type="checkbox" />
+          <div class="swap-on">
+            <div class="card max-w-4xl max-h-[90vh] bg-base-100 aspect-square shadow-xl overflow-scroll">
+              <figure><img src="<%= story.coverPhoto %>" alt="<%= story.title %>"/></figure>
+            </div>
           </div>
-          <div class="collapse-content">
-            <p><%= dream.response %></p>
-          </div>
+          <div class="swap-off">
+            <div class="card max-w-4xl max-h-[90vh] aspect-square bg-base-100 shadow-xl overflow-scroll">
+              <div class="card-body justify-around ">
+                <h2 class="card-title my-8 text-4xl text[= -center"><%= story.title %></h2>
+                <p class="leading-loose text-lg text-left"><%= story.story %></p>
+              </div>
+            </div>
+          </label>
         </div>
-      </section>
-    </div>
-      
-      
+      </div>
     <!-- MODAL -->
     <input type="checkbox" id="my-modal-4" class="modal-toggle" />
     <label for="my-modal-4" class="modal cursor-pointer">
