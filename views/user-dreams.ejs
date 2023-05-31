@@ -61,7 +61,13 @@
               <p><%= dream.response %></p>
             </div>
             <div class="flex">
-                <button data-delete_dream value="<%= dream._id %>" class="w-full rounded-none btn btn-error text-white text-end">Delete</button>
+              <% if(dream?.storyID) {%>
+                <a href="/story/<%= dream.storyID %>" class="w-1/2 rounded-none btn btn-primary">Read</a>
+                <% } else { %>
+                  <button disabled class="w-1/2 rounded-none btn btn-primary">Story not created</button>
+                  <% } %>
+                <button data-delete_dream value="<%= dream._id %>" class="w-1/2 rounded-none btn btn-error text-white text-end">Delete</button>
+
               </div>
           </div>
             <% } %> 

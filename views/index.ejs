@@ -56,7 +56,11 @@
             storyteller, providing captivating insights and imaginative tales
             based on the symbols and themes present in your dreams.
           </p>
-          <label for="my-modal-4" class="btn btn-secondary">Get Started </label>
+          <% if(currentUser) { %>
+            <a href="/new-dream" class="btn btn-secondary">Get Started</a>
+          <% } else { %>
+              <label for="my-modal-4" class="btn btn-secondary">Get Started </label>
+          <% } %>
         </div>
       </div>
     </div>

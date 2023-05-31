@@ -71,7 +71,7 @@ export const addStory = async (req, res) => {
       model: "text-davinci-003",
       prompt: "Please give this story a title: " + storyBody.replace("\n", ""),
       // prompt: "Respond with the number 1",
-      max_tokens: 20,
+      max_tokens: 10,
       temperature: 0,
     });
     console.log(titleResponse.data.choices)
