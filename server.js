@@ -14,7 +14,6 @@ import { logOut, register } from "./controllers/auth.js";
 import users from "./routes/users.js"
 import dreams from "./routes/dreams.js"
 import stories from "./routes/stories.js"
-import { getDreamById } from "./controllers/dreams.js";
 import { Dream } from "./models/Dream.js";
 import { Story } from "./models/Story.js";
 
