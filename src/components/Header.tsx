@@ -3,13 +3,14 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center py-4">
-        <Link className="mx-4" href="/">
+    <header className="flex items-center justify-between gap-8 py-4">
+        <Link className="ml-4" href="/">
           <Image
             src="/logo-transparent-white.png"
-            width={400}
+            width={300}
             height={25}
             alt="Dreamcatcher logo"
+            // sizes="min-width(768px) 100px"
           />
         </Link>
         <nav>
