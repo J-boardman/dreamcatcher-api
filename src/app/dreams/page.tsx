@@ -46,7 +46,7 @@ export default function Dreams() {
                 <td>
                   <Modal
                     openButtonText="Share" 
-                    openButtonClasses="btn-ghost text-primary btn-xs"
+                    openButtonClasses="btn-ghost text-secondary btn-xs"
                     content={<ShareStoryForm />}
                   />
                   {/* <button className="btn btn-xs btn-ghost text-secondary">Share</button> */}

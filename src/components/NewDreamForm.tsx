@@ -3,7 +3,7 @@ import { openai } from "@/lib/openai";
 import { useState } from "react";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 
-export default function Form() {
+export default function NewDreamForm() {
   const [dream, setDream] = useState("");
   const [interpretation, setInterpretation] = useState<string | undefined>("");
   const [statusMessage, setStatusMessage] = useState("")
