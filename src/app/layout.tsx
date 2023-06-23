@@ -20,9 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} text-white`}>
+      <body className={`${inter.className} text-white `}>
           <Background />
-          <main className="max-w-4xl mx-auto px-4 h-screen grid grid-rows-[min-content,_1fr,_min-content]">
+          <main className="max-w-4xl mx-auto px-4 h-[100svh] grid grid-rows-[min-content,_1fr,_min-content]">
             <Header />
             {children}
             <Footer />

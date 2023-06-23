@@ -38,7 +38,7 @@ export default function Form() {
   const { pending } = useFormStatus();
   return (
     <>
-      <label htmlFor="prompt" className="hidden">Enter a brief overview of your dream:</label>
+      <label htmlFor="prompt" className="hidden">Describe your dream:</label>
       <textarea
         className="text-lg textarea textarea-bordered textarea-xs focus-within:textarea-secondary"
         onChange={(e) => setDream(e.target.value)}
@@ -47,14 +47,14 @@ export default function Form() {
         cols={30}
         rows={5}
         required
-        placeholder="Enter a brief overview of your dream..."
+        placeholder="Describe your dream here..."
       ></textarea>
       <section className="grid grid-cols-[min-content,_1fr] sm:flex items-center gap-2">
         <input
           type="checkbox"
           name="include-interpretation"
           id="include-interpretation"
-          className="checkbox"
+          className="checkbox checkbox-secondary"
           defaultChecked={isInterpreting}
           onChange={() => setisInterpreting(!isInterpreting)}
         />
@@ -65,7 +65,7 @@ export default function Form() {
           type="checkbox"
           name="include-story"
           id="include-story"
-          className="checkbox sm:ml-2"
+          className="checkbox checkbox-secondary sm:ml-2"
           defaultChecked={generatingStory}
           onChange={() => setGeneratingStory(!generatingStory)}
         />
@@ -92,8 +92,10 @@ export default function Form() {
             </section>
           : <section></section>
       }
-      
-      <article className="py-4 text-xl">{interpretation}</article>
+      {
+        interpretation &&
+        <article className="p-2 md:py-4 md:px-0 text-xl">{interpretation}</article>
+      }
     </>
   );
 }

@@ -1,18 +1,23 @@
 "use server"
 
+async function wait(time: number){
+  await new Promise(resolve => setTimeout(resolve, time))
+}
+
 export async function generateStory(data: FormData){
   const generatingStory = data.get("include-story")?.length
   if(!generatingStory) {
     console.log("Story not requested.")
     return
   }
-  await new Promise(resolve => setTimeout(resolve, 10000));
+  await wait(10000);
   console.log(data)
 }
 
 export async function getDream(id: string){
+  await wait(3000)
   return {
-    title: "Phoenix's Flight: A Tale of Courage and Hope," ,
+    title: "Phoenix's Flight: A Tale of Courage and Hope" ,
     body: `Once upon a time, in a small village nestled amidst rolling hills, there lived a young child named Phoenix. Their days were filled with laughter, love, and the comforting embrace of a cozy home. However, one fateful night, as the stars sparkled in the sky, disaster struck. Phoenix's house was consumed by a raging fire, flickering flames dancing ominously against the midnight darkness.
 
     With their heart pounding and adrenaline coursing through their veins, Phoenix fled from the burning house, tears streaming down their face. As they sprinted through the village, the warm glow of the flames lighting their path, something extraordinary happened. A mysterious gust of wind swirled around them, lifting Phoenix gently into the air. They were flying.
