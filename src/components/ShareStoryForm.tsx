@@ -23,7 +23,7 @@ export default function ShareStoryForm() {
           <div className="divider">OR</div>
           <div className="flex gap-2 items-center">
             <input type="checkbox" name="generate-story-blurb" id="story-blurb-checkbox" className="checkbox"/>
-            <label htmlFor="story-blurb-checkbox" className="label">Generate a story blurb</label>
+            <label htmlFor="story-blurb-checkbox">Generate a story blurb</label>
           </div>
         </form>
       <div className="modal-action">

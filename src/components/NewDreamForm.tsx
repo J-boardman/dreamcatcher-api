@@ -40,7 +40,7 @@ export default function NewDreamForm() {
     <>
       <label htmlFor="prompt" className="hidden">Describe your dream:</label>
       <textarea
-        className="text-lg textarea textarea-bordered textarea-xs focus-within:textarea-secondary"
+        className="text-lg textarea textarea-bordered textarea-xs textarea-ghost"
         onChange={(e) => setDream(e.target.value)}
         name="prompt"
         id="prompt"
