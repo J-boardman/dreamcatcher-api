@@ -4,9 +4,9 @@ export default function NavLinks(){
   
   return (
     <>
-      <li><Link href="/feed">Latest stories</Link></li>
-      <li><Link href="/new-dream">Log a dream</Link></li>
-      <li><Link href="/dreams">Your stories</Link></li>
+      <li><Link href="/feed">Newsfeed</Link></li>
+      <li><Link href="/new-dream">Dream Journal</Link></li>
+      <li><Link href="/dreams">Stories</Link></li>
       <li><Link href="/account">Account</Link></li>
     </>
   )

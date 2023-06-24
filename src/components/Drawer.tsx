@@ -6,7 +6,7 @@ import NavLinks from "./NavLinks";
 export default function Drawer({ children } : { children: ReactNode } ){
   
   return (
-    <div className="drawer drawer-end max-w-4xl mx-auto px-4 h-[100svh]">
+  <div className="drawer drawer-end max-w-4xl mx-auto px-4 h-[100svh]">
   <input id="my-drawer-3" type="checkbox" className="drawer-toggle" /> 
   <div className="drawer-content h-[100svh] overflow-scroll  grid grid-rows-[min-content,_1fr,_min-content]">
     {/* Navbar */}
