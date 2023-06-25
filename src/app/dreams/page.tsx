@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Dreams() {
   return (
-    <section className="flex flex-col max-h-full overflow-scroll">
+    <main className="flex flex-col max-h-full overflow-scroll">
       <h1 className="text-4xl my-4 font-bold text-center md:text-left">
         Your <span className="text-secondary">stories</span>
       </h1>
@@ -59,6 +59,6 @@ export default function Dreams() {
           </tbody>
         </table>
       </div>
-    </section>
+    </main>
   );
 }

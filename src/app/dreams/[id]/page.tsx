@@ -5,7 +5,7 @@ export default async function page({ params }: { params: { id: string } }) {
   const dream = await getDream(params.id);
   console.log(dream);
   return (
-    <section className="rounded-3xl max-w-lg grid-rows-2 my-4 mx-auto overflow-scroll text-black">
+    <main className="rounded-3xl max-w-lg grid-rows-2 my-4 mx-auto overflow-scroll text-black">
       <Image
         src={dream.image}
         width={900}
@@ -36,6 +36,6 @@ export default async function page({ params }: { params: { id: string } }) {
           </p>
         ))}
       </section>
-    </section>
+    </main>
   );
 }

@@ -1,43 +1,43 @@
 import Image from "next/image";
 import Link from "next/link";
+import NavLinks from "./NavLinks";
 
 export default function Header() {
   return (
-    <header className="navbar">
-      <div className="flex-2 px-2 lg:flex-none">
-      <Link href="/">
+    <header className="w-full navbar">
+      <section className="flex-1">
+        <Link href="/">
           <Image
             src="/logo-transparent-white.png"
             width={300}
             height={25}
             alt="Dreamcatcher logo"
-            // sizes="min-width(768px) 100px"
           />
         </Link>
-      </div>
-      <div className="flex justify-end flex-1 px-2">
-        <div className="flex">
-          <div className="dropdown dropdown-end dropdown-hover">
-            <label tabIndex={0} className="btn btn-circle btn-secondary">
-              JB
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 pt-2"
+        <div className="flex-none md:hidden ml-auto">
+          <label htmlFor="my-drawer-3" className="btn btn-circle btn-ghost">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              className="inline-block w-6 h-6 stroke-current"
             >
-              <li>
-                <Link href={"/new-dream"}>Account</Link>
-              </li>
-              <li>
-                <Link href={"/new-dream"}>New Dream</Link>
-              </li>
-              <li>
-                <Link href={"/dreams"}>Dreams</Link>
-              </li>
-            </ul>
-          </div>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </label>
         </div>
-      </div>
+      </section>
+      <nav className="flex-none hidden md:block">
+        <ul className="menu menu-horizontal font-semibold">
+          {/* Navbar menu content here */}
+          <NavLinks />
+        </ul>
+      </nav>
     </header>
   );
 }
