@@ -9,14 +9,17 @@ export default function NewDreamForm() {
   const [statusMessage, setStatusMessage] = useState("")
   const [isInterpreting, setisInterpreting] = useState(false)
   const [generatingStory, setGeneratingStory] = useState(false)
+  const [formSubmitted, setFormSubmitted] = useState(false)
+
 
   async function handleSubmit() {
     if(!isInterpreting) return
+    setFormSubmitted(true)
     setInterpretation("")
     setStatusMessage("Interpreting dream...")
     try {
       const response = await openai.createCompletion({
-        model: "text-davinci-002",
+        model: "text-davinci-003",
         prompt: "I want you to act as a dream interpreter. I will give you descriptions of my dreams, and you will provide short interpretations based on the symbols and themes present in the dream. Prompt: " + dream,
         // prompt: "Respond with the number 1",
         max_tokens: 256,
@@ -38,55 +41,55 @@ export default function NewDreamForm() {
   const { pending } = useFormStatus();
   return (
     <>
-      <label htmlFor="prompt" className="hidden">Describe your dream:</label>
-      <textarea
-        className="text-lg textarea textarea-bordered textarea-xs textarea-ghost"
-        onChange={(e) => setDream(e.target.value)}
-        name="prompt"
-        id="prompt"
-        cols={30}
-        rows={5}
-        required
-        placeholder="Describe your dream here..."
-      ></textarea>
-      <section className="grid grid-cols-[min-content,_1fr] sm:flex items-center gap-2">
-        <input
-          type="checkbox"
-          name="include-interpretation"
-          id="include-interpretation"
-          className="checkbox checkbox-secondary"
-          defaultChecked={isInterpreting}
-          onChange={() => setisInterpreting(!isInterpreting)}
-        />
-        <label className="text-lg" htmlFor="include-interpretation">
-          <span className="text-secondary">Interpret</span> dream?
-        </label>
-        <input
-          type="checkbox"
-          name="include-story"
-          id="include-story"
-          className="checkbox checkbox-secondary sm:ml-2"
-          defaultChecked={generatingStory}
-          onChange={() => setGeneratingStory(!generatingStory)}
-        />
-        <label className="text-lg" htmlFor="include-story">
-          Include a <span className="text-secondary">bedtime story</span>?
-        </label>
-
-        {pending ? (
-          <button disabled className="btn btn-secondary ml-auto col-span-2 w-full sm:w-fit">
-            <span className="loading loading-spinner"></span>
-            Submit
-          </button>
-        ) : (
-          <button disabled={!isInterpreting && !generatingStory || !dream} className="btn btn-secondary ml-auto col-span-2 w-full sm:w-fit" onClick={handleSubmit}>
-            Submit
-          </button>
-        )}
-      </section>
+        <label htmlFor="prompt" className="hidden">Describe your dream:</label>
+        <textarea
+          className="md:text-lg textarea textarea-bordered textarea-xs textarea-ghost m-1 min-h-[110px]"
+          onChange={(e) => setDream(e.target.value)}
+          value={dream}
+          name="prompt"
+          id="prompt"
+          cols={30}
+          rows={5}
+          required
+          placeholder="Describe your dream here..."
+        ></textarea>
+        <section className="grid grid-cols-[min-content,_1fr] sm:flex items-center gap-2">
+          <input
+            type="checkbox"
+            name="include-interpretation"
+            id="include-interpretation"
+            className="checkbox checkbox-secondary"
+            onChange={() => setisInterpreting(!isInterpreting)}
+            checked={isInterpreting}
+          />
+          <label className="text-lg" htmlFor="include-interpretation">
+            <span className="text-secondary">Interpret</span> dream?
+          </label>
+          <input
+            type="checkbox"
+            name="include-story"
+            id="include-story"
+            className="checkbox checkbox-secondary sm:ml-2"
+            checked={generatingStory}
+            onChange={() => setGeneratingStory(!generatingStory)}
+          />
+          <label className="text-lg" htmlFor="include-story">
+            Include a <span className="text-secondary">bedtime story</span>?
+          </label>
+          {pending ? (
+            <button disabled className="btn btn-secondary ml-auto col-span-2 w-full sm:w-fit">
+              <span className="loading loading-spinner"></span>
+              Submit
+            </button>
+          ) : (
+            <button disabled={!isInterpreting && !generatingStory || !dream} className="btn btn-secondary ml-auto col-span-2 w-full sm:w-fit" onClick={handleSubmit}>
+              Submit
+            </button>
+          )}
+        </section>
       {
         statusMessage
-          ? <section className="flex gap-4">
+          ? <section className="flex gap-4 justify-center md:justify-start">
               <span className="loading text-secondary loading-bars loading-md"></span>
               <span>{statusMessage}</span>
             </section>
@@ -94,7 +97,7 @@ export default function NewDreamForm() {
       }
       {
         interpretation &&
-        <article className="p-2 md:py-4 md:px-0 text-xl">{interpretation}</article>
+          <article className="p-2 md:py-4 md:px-0 md:text-xl text-center md:text-left overflow-scroll max-h-full">{interpretation}</article>
       }
     </>
   );

@@ -14,20 +14,20 @@ export default function Newsfeed() {
       <section>
         <FeedButtons feedType={feedType} setFeedType={setFeedType} />
       </section>
-      <section className="max-h-full overflow-scroll flex flex-col gap-4 rounded-t-lg pb-20">
+      <section className="flex max-h-full flex-col gap-4 overflow-scroll rounded-t-lg pb-20">
         {Array.from({ length: 4 }, (x, i) => (
-          <section key={i} className="join join-vertical">
-            <section className="bg-base-200 join-item flex justify-between items-center p-4">
-              <div className="flex justify-between items-center w-full">
+          <section key={i} className="join-vertical join">
+            <section className="join-item flex items-center justify-between bg-base-200 p-4">
+              <div className="flex w-full items-center justify-between">
                 <UserAvatar />
-                <button className="btn btn-ghost btn-xs sm:btn-sm md:btn-md focus:bg-transparent">
+                <button className="btn-ghost btn-xs btn sm:btn-sm md:btn-md focus:bg-transparent">
                   Follow
                 </button>
               </div>
             </section>
-            <article className="hidden sm:flex card card-side bg-base-200 join-item p-4">
+            <article className="card card-side join-item hidden bg-base-200 p-4 sm:flex">
               <div className="avatar">
-                <div className="sm:mask sm:mask-squircle w-32 h-32 md:w-64 md:h-64">
+                <div className="h-32 w-32 sm:mask sm:mask-squircle md:h-64 md:w-64">
                   <Image
                     src="/story-cover.jpg"
                     alt="Avatar Tailwind CSS Component"
@@ -37,7 +37,7 @@ export default function Newsfeed() {
                 </div>
               </div>
               <div className="px-4 md:py-4">
-                <h2 className="font-bold text-md md:text-2xl pb-4">
+                <h2 className="text-md pb-4 font-bold md:text-2xl">
                   Phoenix&apos;s Flight: A Tale of Courage and Hope
                 </h2>
                 <p>
@@ -51,13 +51,13 @@ export default function Newsfeed() {
                 </p>
               </div>
             </article>
-            <label className="swap sm:hidden bg-base-200 join-item px-4 rounded-lg">
+            <label className="swap join-item rounded-lg bg-base-200 px-4 sm:hidden">
               {/* this hidden checkbox controls the state */}
               <input type="checkbox" />
 
               <div className="swap-on">
-                <div className="px-4 w-72 h-72 bg-base-100 rounded-3xl grid place-items-center overflow-scroll">
-                  <h2 className="font-bold text-md">
+                <div className="grid h-72 w-72 place-items-center overflow-scroll rounded-3xl bg-base-100 px-4">
+                  <h2 className="text-md font-bold">
                     Phoenix&apos;s Flight: A Tale of Courage and Hope
                   </h2>
                   <p className="text-sm">
@@ -71,7 +71,7 @@ export default function Newsfeed() {
               </div>
               <div className="swap-off">
                 <div className="avatar">
-                  <div className="w-72 h-72 rounded-3xl">
+                  <div className="h-72 w-72 rounded-3xl">
                     <Image
                       src="/story-cover.jpg"
                       alt="Avatar Tailwind CSS Component"
@@ -82,12 +82,14 @@ export default function Newsfeed() {
                 </div>
               </div>
             </label>
-            <section className="bg-base-200 join-item p-4">
-              <button className="btn btn-ghost">Like</button>
-              <Link href="/dreams/1" className="btn btn-ghost">
-                Read
+            <section className="join-item bg-base-200 p-4 w-full flex justify-between">
+              <div>
+                <button className="btn-ghost btn">Like</button>
+                <button className="btn-ghost btn">Comment</button>
+              </div>
+              <Link href="/dreams/1" className="btn-ghost btn ml-auto">
+                Read more
               </Link>
-              <button className="btn btn-ghost">Comment</button>
             </section>
           </section>
         ))}

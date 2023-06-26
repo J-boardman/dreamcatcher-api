@@ -24,12 +24,12 @@ export default function FeedButtons({
       </button>
       <button
         className={`btn btn-ghost focus:bg-transparent ${
-          feedType == "latest" ? "text-secondary" : null
+          feedType == "global" ? "text-secondary" : null
         }`}
         onClick={handleFeedChange}
-        value="latest"
+        value="global"
       >
-        Latest
+        Global
       </button>
     </>
   );
