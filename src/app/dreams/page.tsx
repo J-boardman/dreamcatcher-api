@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Dreams() {
   return (
-    <main className="flex flex-col max-h-full overflow-scroll">
+    <main className="flex flex-col max-h-full overflow-hidden">
       <h1 className="text-4xl my-4 font-bold text-center md:text-left">
         Your <span className="text-secondary">stories</span>
       </h1>
@@ -49,7 +49,6 @@ export default function Dreams() {
                     openButtonClasses="btn-ghost text-secondary btn-xs"
                     content={<ShareStoryForm />}
                   />
-                  {/* <button className="btn btn-xs btn-ghost text-secondary">Share</button> */}
                 </td>
                 <th>
                   <button className="btn btn-ghost btn-xs text-error">Delete</button>

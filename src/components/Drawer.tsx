@@ -6,7 +6,7 @@ export default function Drawer({ children }: { children: ReactNode }) {
   return (
     <section className="drawer drawer-end max-w-4xl mx-auto px-4">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-      <section className="drawer-content h-[100svh] overflow-scroll grid grid-rows-[min-content,_1fr,_min-content]">
+      <section className="drawer-content h-[100svh] grid grid-rows-[min-content,_1fr,_min-content]">
         <Header />
         {/* Page content here */}
         {children}

@@ -2,3 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.no-scrollbar::-webkit-scrollbar {
+  /* display: none; */
+}
+
+::-webkit-scrollbar {
+    height: 12px;
+    width: 5px;
+    background: #000;
+    transition: 300ms;
+    display: none;
+}

@@ -1,9 +1,9 @@
 import Hero from "@/components/Hero";
 
-export default async function Home() {
+export default async function Test() {
   return (
-    <div className="text-white h-full flex justify-center items-center">
+    <main className="text-white h-full flex justify-center items-center">
       <Hero />
-    </div>
+    </main>
   )
 }
