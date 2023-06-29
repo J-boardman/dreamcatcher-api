@@ -3,10 +3,10 @@ import Image from "next/image";
 export default function ShareStoryForm() {
   return (
     <>
-      <h3 className="font-bold text-lg">
+      <h3 className="font-bold text-lg mb-4">
         Share <span className="text-secondary">your story</span>
       </h3>
-      <div className="flex items-center space-x-3 mt-4">
+      <div className="flex items-center space-x-3">
         <div className="avatar">
           <div className="mask mask-squircle w-24 h-24">
             <Image src="/story-cover.jpg" alt="Avatar Tailwind CSS Component" height={96} width={96}/>

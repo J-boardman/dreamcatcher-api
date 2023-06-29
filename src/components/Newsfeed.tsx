@@ -5,6 +5,8 @@ import FeedButtons from "./FeedButtons";
 import Image from "next/image";
 import UserAvatar from "./UserAvatar";
 import Link from "next/link";
+import Modal from "./Modal";
+import CommentSection from "./CommentSection";
 
 export default function Newsfeed() {
   const [feedType, setFeedType] = useState("following");
@@ -85,7 +87,7 @@ export default function Newsfeed() {
             <section className="join-item bg-base-200 p-4 w-full flex justify-between">
               <div>
                 <button className="btn-ghost btn">Like</button>
-                <button className="btn-ghost btn">Comment</button>
+                <Modal content={<CommentSection />} openButtonClasses="btn-ghost" openButtonText="Comment"/>
               </div>
               <Link href="/dreams/1" className="btn-ghost btn ml-auto">
                 Read more
