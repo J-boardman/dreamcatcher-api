@@ -3,34 +3,23 @@ import { Dispatch, MouseEvent, SetStateAction } from "react";
 export default function FeedButtons({
   feedType,
   setFeedType,
+  feedOptions,
 }: {
   feedType: string;
   setFeedType: Dispatch<SetStateAction<string>>;
+  feedOptions: string[]
 }) {
-  function handleFeedChange(e: MouseEvent<HTMLButtonElement>) {
-    setFeedType(e?.currentTarget?.value);
-  }
+  const mappedOptions = feedOptions.map((option) => (
+    <button
+      key={option}
+      className={`btn-ghost btn focus:bg-transparent ${
+        feedType === option ? "text-secondary" : null
+      }`}
+      onClick={() => setFeedType(option)}
+    >
+      {option}
+    </button>
+  ));
 
-  return (
-    <>
-      <button
-        className={`btn btn-ghost focus:bg-transparent ${
-          feedType == "following" ? "text-secondary" : null
-        }`}
-        onClick={handleFeedChange}
-        value="following"
-      >
-        Following
-      </button>
-      <button
-        className={`btn btn-ghost focus:bg-transparent ${
-          feedType == "global" ? "text-secondary" : null
-        }`}
-        onClick={handleFeedChange}
-        value="global"
-      >
-        Global
-      </button>
-    </>
-  );
+  return <>{mappedOptions}</>;
 }

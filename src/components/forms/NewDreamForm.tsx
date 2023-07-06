@@ -9,7 +9,7 @@ export default function NewDreamForm() {
   const [statusMessage, setStatusMessage] = useState("")
   const [isInterpreting, setisInterpreting] = useState(false)
   const [generatingStory, setGeneratingStory] = useState(false)
-  
+
   async function handleSubmit() {
     if(!isInterpreting) return
     setInterpretation("")
