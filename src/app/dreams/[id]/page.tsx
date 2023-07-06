@@ -5,7 +5,7 @@ import CommentSection from "@/components/CommentSection";
 import FollowButton from "@/components/FollowButton";
 import Modal from "@/components/layout/Modal";
 import UserAvatar from "@/components/user/UserAvatar";
-import { getDream } from "@/lib/actions";
+import { getDream } from "@/lib/actions/dreams";
 import Image from "next/image";
 
 export default async function page({ params }: { params: { id: string } }) {
