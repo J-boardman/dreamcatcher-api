@@ -1,5 +1,5 @@
 import Image from "next/image";
-import UserAvatar from "./UserAvatar";
+import UserAvatar from "./user/UserAvatar";
 
 export default function CommentsList() {
   return (

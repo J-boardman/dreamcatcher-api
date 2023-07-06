@@ -1,5 +1,5 @@
-import Modal from "@/components/Modal";
-import ShareStoryForm from "@/components/ShareStoryForm";
+import Modal from "@/components/layout/Modal";
+import ShareStoryForm from "@/components/forms/ShareStoryForm";
 import Image from "next/image";
 import Link from "next/link";
 

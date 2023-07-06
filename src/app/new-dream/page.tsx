@@ -1,4 +1,4 @@
-import NewDreamForm from "@/components/NewDreamForm";
+import NewDreamForm from "@/components/forms/NewDreamForm";
 import { generateStory } from "@/lib/actions";
 
 export default function page() {

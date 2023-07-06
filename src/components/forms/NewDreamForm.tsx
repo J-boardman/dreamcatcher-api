@@ -9,7 +9,7 @@ export default function NewDreamForm() {
   const [statusMessage, setStatusMessage] = useState("")
   const [isInterpreting, setisInterpreting] = useState(false)
   const [generatingStory, setGeneratingStory] = useState(false)
-
+  
   async function handleSubmit() {
     if(!isInterpreting) return
     setInterpretation("")
@@ -40,7 +40,7 @@ export default function NewDreamForm() {
     <>
         <label htmlFor="prompt" className="hidden">Describe your dream:</label>
         <textarea
-          className="md:text-lg textarea textarea-bordered textarea-xs textarea-ghost m-1 min-h-[110px]"
+          className="md:text-lg textarea textarea-bordered textarea-ghost m-1 flex-grow min-h-[110px] transition-all duration-100"
           onChange={(e) => setDream(e.target.value)}
           value={dream}
           name="prompt"

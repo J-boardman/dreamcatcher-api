@@ -1,9 +1,9 @@
 import React, { Suspense } from "react";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Background from "@/components/Background";
-import Footer from "@/components/Footer";
-import Drawer from "@/components/Drawer";
+import Background from "@/components/layout/Background";
+import Drawer from "@/components/layout/Drawer";
+import Footer from "@/components/layout/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 

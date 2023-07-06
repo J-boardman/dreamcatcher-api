@@ -1,7 +1,10 @@
-import BackButton from "@/components/BackButton";
+import BackButton from "@/components/buttons/BackButton";
+import CommentButton from "@/components/buttons/CommentButton";
+import LikeButton from "@/components/buttons/LikeButton";
 import CommentSection from "@/components/CommentSection";
-import Modal from "@/components/Modal";
-import UserAvatar from "@/components/UserAvatar";
+import FollowButton from "@/components/FollowButton";
+import Modal from "@/components/layout/Modal";
+import UserAvatar from "@/components/user/UserAvatar";
 import { getDream } from "@/lib/actions";
 import Image from "next/image";
 
@@ -19,19 +22,18 @@ export default async function page({ params }: { params: { id: string } }) {
           className="h-full w-full"
         />
       </section>
-      <article className="flex flex-col justify-center gap-2  bg-base-200 p-2 text-white md:justify-between ">
-        <section className="flex items-center justify-around md:justify-between md:p-4">
+      <article className="flex flex-col justify-center gap-4 md:gap-0 bg-base-200 p-2 text-white md:justify-between ">
+        <section className="flex items-center justify-around md:justify-between md:py-4 md:pl-4">
           <UserAvatar />
-          <button className="btn-ghost btn-xs btn sm:btn-sm md:btn-md focus:bg-transparent">
-            Follow
-          </button>
+          <FollowButton />
         </section>
-        <section className="flex justify-around ">
-          <button className="btn-ghost btn">Like</button>
-          <Modal content={<CommentSection />} openButtonClasses="btn-ghost" openButtonText="Comment"/>
+        <section className="flex justify-around md:justify-start">
+        <LikeButton />
+        <CommentButton />
         </section>
       </article>
       <section className="row-span-2 bg-base-200 p-4 text-white md:overflow-scroll">
+        <div className="divider md:hidden"></div>
         <h2 className="py-2 text-center text-3xl font-bold">{story.title}</h2>
         {story.body.split("\n").map((paragraph, index) => (
           <p className="md:text-md my-4 text-sm" key={index}>

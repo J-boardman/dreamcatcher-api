@@ -2,7 +2,7 @@
 
 import { ReactNode, useRef } from "react";
 
-export default function Modal({ openButtonClasses, openButtonText, content } : { openButtonClasses: string, openButtonText: string, content: ReactNode }) {
+export default function Modal({ openButtonClasses, openButtonText, content } : { openButtonClasses: string, openButtonText: string | ReactNode, content: ReactNode }) {
   const modal: any = useRef();
   return (
     <>
