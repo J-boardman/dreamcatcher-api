@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import Background from "@/components/layout/Background";
 import Drawer from "@/components/layout/Drawer";
 import Footer from "@/components/layout/Footer";
+import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,14 +21,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} text-white `}>
-        <Background />
-        <Drawer>
-          {children}
-          <Footer />
-        </Drawer>
-      </body>
-    </html>
+    <ClerkProvider appearance={{ baseTheme: dark, variables: {
+      colorPrimary: "#aa73f7"
+    } }}>
+      <html lang="en">
+        <body className={`${inter.className} text-white `}>
+          <Background />
+          <Drawer>
+            {children}
+            <Footer />
+          </Drawer>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import NavLinks from "../NavLinks";
+import { SignedIn, UserButton } from "@clerk/nextjs";
 
 export default function Header() {
   return (
@@ -32,11 +33,14 @@ export default function Header() {
           </label>
         </div>
       </section>
-      <nav className="flex-none hidden md:block">
+      <nav className="hidden md:flex gap-4">
+        <SignedIn>
         <ul className="menu menu-horizontal font-semibold">
           {/* Navbar menu content here */}
           <NavLinks />
         </ul>
+          <UserButton afterSignOutUrl="/" />
+        </SignedIn>
       </nav>
     </header>
   );

@@ -15,6 +15,7 @@ export async function interpretDream(prompt: string){
   return response.data.choices[0].text?.trim()
 }
 
+// (R)ead
 export async function getDream(id: string) {
   await wait(3000)
   return {
@@ -41,5 +42,12 @@ export async function getDream(id: string) {
 export async function getDreams() {
 
 }
+
+
+// (U)pdate
+
+
+// (D)elete
+
 
 export async function deleteDream() { }

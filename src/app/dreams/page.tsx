@@ -1,7 +1,3 @@
-import Modal from "@/components/layout/Modal";
-import ShareStoryForm from "@/components/forms/ShareStoryForm";
-import Image from "next/image";
-import Link from "next/link";
 import StoriesFeed from "@/components/StoriesFeed";
 
 export default function Dreams() {

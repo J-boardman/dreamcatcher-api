@@ -1,10 +1,11 @@
 import Hero from "@/components/Hero";
 import Newsfeed from "@/components/Newsfeed";
+import { auth, currentUser } from "@clerk/nextjs";
 
-export default async function Test() {
-  const userLoggedIn = true;
+export default async function Page() {
+  const user = await currentUser()
 
-  if (!userLoggedIn)
+  if (!user)
     return (
       <main className="flex h-full items-center justify-center text-white">
         <Hero />

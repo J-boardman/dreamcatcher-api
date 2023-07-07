@@ -14,7 +14,7 @@ export default function Hero() {
             Relax as our AI dream interpreter and bedtime storyteller provides
             captivating insights and imaginative tales based on your dreams!
           <Link
-            href="/new-dream"
+            href="/sign-in"
             className="btn btn-secondary w-full my-6 text-xl font-bold"
           >
             Get Started
