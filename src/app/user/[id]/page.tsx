@@ -7,11 +7,22 @@ import Image from "next/image";
 export default async function page({ params }: { params: { id: number } }) {
   const { id } = params;
   const { username, firstName, lastName } = await getUser(id);
+
+  const userTitle = (
+    <h1 className="text-center text-xl font-bold md:text-left md:text-4xl">
+      <span className="text-secondary">{username}</span>&apos;s stories
+    </h1>
+  );
+
   return (
     <main className="flex max-h-full flex-col overflow-scroll">
       <div className="flex items-center justify-between">
         <div className="my-4">
-          <UserAvatar primaryText={username} secondaryText="99 followers" largeAvatarCard={true} />
+          <UserAvatar
+            primaryText={userTitle}
+            secondaryText="99 followers"
+            largeAvatarCard={true}
+          />
         </div>
         <FollowButton />
       </div>

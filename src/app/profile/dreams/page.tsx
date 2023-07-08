@@ -4,7 +4,7 @@ export default function page(){
   
   return (
     <section>
-      <ProfileNavbar focused="stories" />
+      <ProfileNavbar focused="dreams" />
     </section>
   )
 };

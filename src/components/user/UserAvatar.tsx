@@ -1,15 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ReactNode } from "react";
 
 export default function UserAvatar({
   profilePictureURL = "https://avatars.dicebear.com/api/open-peeps/stefan.svg",
   primaryText = "Stefan Higgity",
   secondaryText = "1hr ago",
-  userProfileLink = "/profile/1",
+  userProfileLink = "/user/1",
   largeAvatarCard = false
 }: {
   profilePictureURL?: string;
-  primaryText?: string;
+  primaryText?: ReactNode | string;
   secondaryText?: string;
   userProfileLink?: string;
   largeAvatarCard?: boolean
@@ -32,10 +33,7 @@ export default function UserAvatar({
       <div>
         {largeAvatarCard ? (
           <>
-            <h1 className="text-center text-xl font-bold md:text-left md:text-4xl">
-              <span className="text-secondary">{primaryText}</span>&apos;s
-              stories
-            </h1>
+          {primaryText}
             <p>{secondaryText}</p>
           </>
         ) : (

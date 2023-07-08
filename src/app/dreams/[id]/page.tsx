@@ -1,9 +1,7 @@
 import BackButton from "@/components/buttons/BackButton";
 import CommentButton from "@/components/buttons/CommentButton";
 import LikeButton from "@/components/buttons/LikeButton";
-import CommentSection from "@/components/CommentSection";
 import FollowButton from "@/components/FollowButton";
-import Modal from "@/components/layout/Modal";
 import UserAvatar from "@/components/user/UserAvatar";
 import { getDream } from "@/lib/actions/dreams";
 import Image from "next/image";

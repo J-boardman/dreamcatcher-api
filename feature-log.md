@@ -2,7 +2,7 @@
 
 [x] Change main page to newsfeed (altered to welcome hero if user is not authed)
 [ ] Moods for stories
-[ ] Social media aspects
+[x] Social media aspects
 [ ] Protagonists gender based on user?
 [ ] Prompts: interpret, get title, create story, blurb, image
 [ ] Newsfeed, add + symbol on following/latest header for easy access to dream journal
