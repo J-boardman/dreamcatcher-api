@@ -8,7 +8,6 @@ export default async function ProfileLayout({
   children: ReactNode;
 }) {
   const user = await currentUser();
-  console.log(user);
 
   const userTitle = (
     <h1 className="text-center text-xl font-bold md:text-left md:text-4xl">
