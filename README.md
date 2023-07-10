@@ -1,10 +1,16 @@
 # [Dreamcatcher](https://dreamcatcher-three.vercel.app/)
 
-**Please note: This app is in development and is not indicative of final release**
+**Please note: This application is in development and is not indicative of final release**
+
+*Documentation TBA*
 
 ## Getting Started
+First, clone this repository:
+```
+git clone https://github.com/J-boardman/dreamcatcher
+```
 
-First, run the development server:
+Then, run the development server:
 
 ```bash
 npm run dev
