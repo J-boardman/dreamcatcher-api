@@ -5,7 +5,7 @@ import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Drawer({ children }: { children: ReactNode }) {
   return (
-    <section className="drawer drawer-end mx-auto max-w-4xl px-4">
+    <section className="drawer drawer-end ">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <section className="drawer-content grid h-[100svh] grid-rows-[min-content,_1fr,_min-content]">
         <Header />

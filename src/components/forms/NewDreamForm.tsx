@@ -53,7 +53,7 @@ export default function NewDreamForm() {
           rows={10}
           {...register("dream")}
           placeholder="Describe your dream here"
-          className="textarea-bordered textarea-ghost textarea m-1 min-h-[110px] flex-grow md:text-lg"
+          className="textarea-bordered textarea-ghost textarea m-1 min-h-[110px] md:text-lg"
         />
         <section className="grid grid-cols-[min-content,_1fr] items-center gap-2 sm:flex">
           <input

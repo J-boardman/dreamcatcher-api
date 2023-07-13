@@ -6,6 +6,7 @@ import Drawer from "@/components/layout/Drawer";
 import Footer from "@/components/layout/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import Header from "@/components/layout/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,16 +22,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider appearance={{ baseTheme: dark, variables: {
-      colorPrimary: "#aa73f7"
-    } }}>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+        variables: {
+          colorPrimary: "#aa73f7",
+        },
+      }}
+    >
       <html lang="en">
-        <body className={`${inter.className} text-white `}>
+        <body
+          className={`${inter.className} mx-auto max-w-4xl px-4 text-white`}
+        >
           <Background />
-          <Drawer>
+          <section className="grid h-[100svh] grid-rows-[min-content,_1fr,_min-content]">
+            <Header />
             {children}
             <Footer />
-          </Drawer>
+          </section>
         </body>
       </html>
     </ClerkProvider>
