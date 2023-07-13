@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IconHome2, IconUser, IconZzz } from "@tabler/icons-react";
+import { SignedIn } from "@clerk/nextjs";
 export default function MobileFooter() {
   const pathname = usePathname();
   const links = [
@@ -28,6 +29,10 @@ export default function MobileFooter() {
   });
 
   return (
-    <nav className="btm-nav btm-nav-sm text-white md:hidden">{mappedLinks}</nav>
+    <SignedIn>
+      <nav className="btm-nav btm-nav-sm text-white md:hidden">
+        {mappedLinks}
+      </nav>
+    </SignedIn>
   );
 }

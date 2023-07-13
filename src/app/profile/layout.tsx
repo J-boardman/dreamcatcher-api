@@ -1,5 +1,5 @@
 import UserAvatar from "@/components/user/UserAvatar";
-import { currentUser } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs";
 import { ReactNode } from "react";
 
 export default async function ProfileLayout({
@@ -7,7 +7,7 @@ export default async function ProfileLayout({
 }: {
   children: ReactNode;
 }) {
-  const user = await currentUser();
+  const { user } = auth();
 
   const userTitle = (
     <h1 className="text-center text-xl font-bold md:text-left md:text-4xl">

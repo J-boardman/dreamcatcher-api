@@ -1,10 +1,18 @@
 "use server"
 
+import { db } from "@/db/database"
 import { wait } from "../actions"
 import { openai } from "../openai"
+import { dreams } from "@/db/schema"
+import { eq } from "drizzle-orm"
 
 // (C)reate
 export async function interpretDream(prompt: string){
+  const dream = await db.insert(dreams).values({
+    authorId: 1,
+    prompt: "My house was on fire and I was running for my life.",
+    interpretation:"Dreams about a house on fire often symbolize a sense of loss, chaos, or emotional turmoil in one's life. Running for your life indicates a strong desire to escape or overcome a challenging situation or overwhelming emotions. The fire represents a powerful force that threatens to consume and destroy what is familiar and secure. This dream may reflect a need for change, a fear of losing control, or a sense of urgency to address and resolve difficult circumstances."
+  })
   const response = await openai.createCompletion({ 
         model: "text-davinci-003",
         prompt: `I want you to act as a dream interpreter. I will give you descriptions of my dreams, and you will provide short interpretations based on the symbols and themes present in the dream. Prompt: ${prompt}`,
@@ -17,6 +25,8 @@ export async function interpretDream(prompt: string){
 
 // (R)ead
 export async function getDream(id: string) {
+  const allDreams = await db.select().from(dreams)
+  console.log(allDreams)
   await wait(3000)
   return {
     title: "Phoenix's Flight: A Tale of Courage and Hope",
@@ -41,6 +51,19 @@ export async function getDream(id: string) {
 
 export async function getDreams() {
 
+}
+
+export async function getUserDreams(user_id: number){
+  await wait(800)
+  const userDreams: Dream[] = [{
+    id: 1,
+    author_id: 1,
+    prompt: "My house was on fire and I was running for my life.",
+    interpretation: "Dreams about a house on fire often symbolize a sense of loss, chaos, or emotional turmoil in one's life. Running for your life indicates a strong desire to escape or overcome a challenging situation or overwhelming emotions. The fire represents a powerful force that threatens to consume and destroy what is familiar and secure. This dream may reflect a need for change, a fear of losing control, or a sense of urgency to address and resolve difficult circumstances."
+  }]
+  // const userDreams = await db.select().from(dreams).where(eq(dreams.authorId, user_id))
+  console.log(userDreams)
+  return userDreams
 }
 
 

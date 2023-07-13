@@ -1,9 +1,9 @@
 import Hero from "@/components/Hero";
 import Newsfeed from "@/components/Newsfeed";
-import { auth, currentUser } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs";
 
 export default async function Page() {
-  const user = await currentUser()
+  const {user} = auth()
 
   if (!user)
     return (

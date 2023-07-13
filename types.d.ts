@@ -6,8 +6,8 @@ type Story = {
 
 
 type Dream = {
-  id: string
-  author_id: string
+  id: number
+  author_id: number
   prompt: string
   interpretation: string
 }
